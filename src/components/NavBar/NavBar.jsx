@@ -9,7 +9,9 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav>
-      <Link to="/books">Book List</Link>
+      <Link to="/">Home</Link>
+      &nbsp; | &nbsp;
+      <Link to="/books">Add A Book</Link>
       &nbsp; | &nbsp;
       <Link to="/mybooks">My Books</Link>
       &nbsp;&nbsp;

@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import * as booksAPI from '../../utilities/books-api';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import './BookListPage.css';
 import { checkToken } from "../../utilities/users-service";
 
 export default function BookListPage() {
@@ -25,8 +28,8 @@ export default function BookListPage() {
 
   const handleChange=(e)=>{
     
-    const {title, author, genre} = e.target
-      setNewBookForm(prevState => ({...prevState,[title]:title, [author]:author, [genre]:genre  
+    const {name, value} = e.target
+      setNewBookForm(prevState => ({...prevState,[name]:value  
     }))
     }
 
@@ -36,7 +39,9 @@ export default function BookListPage() {
     const token = localStorage.getItem('token');
     const user = JSON.parse(atob(token.split('.')[1])).user
     newBook.user=user._id
-    newBook.name=newBookForm.name
+    newBook.title=newBookForm.title
+    newBook.author=newBookForm.author
+    newBook.genre=newBookForm.genre
     console.log(newBook)
     booksAPI.newBook(newBook)
     getBooks()
@@ -52,16 +57,33 @@ export default function BookListPage() {
       )
     })}</div>
     }
-    
-    <form onSubmit={handleSubmit}>
-    <label >Title: </label>
-    <input size="20" value={newBookForm.title} onChange={handleChange} name="title"></input><br />
-    <label >Author: </label>
-    <input size="15" value={newBookForm.author} onChange={handleChange} name="author"></input> <br />
-    <label >Genre: </label>
-    <input size="20" value={newBookForm.genre} onChange={handleChange} name="genre"></input> <br />
+    &nbsp; &nbsp; &nbsp; &nbsp;
+   <div className="addBook" >
+    <Form onSubmit={handleSubmit}>
+    <Form.Group className="mb-3" controlId="bookForm.ControlInput1">
+        <Form.Label>Title</Form.Label>
+        <Form.Control type="text" value={newBookForm.title} onChange={handleChange} name="title"/> 
+      </Form.Group>
+    <Form.Group className="mb-3" controlId="bookForm.ControlInput2">
+        <Form.Label>Author</Form.Label>
+        <Form.Control type="text" value={newBookForm.author} onChange={handleChange} name="author"/> 
+      </Form.Group>
+    <Form.Group className="mb-3" controlId="bookForm.ControlInput3">
+        <Form.Label>Genre</Form.Label>
+        <Form.Control type="text" value={newBookForm.genre} onChange={handleChange} name="genre"/> 
+      </Form.Group>
+      <Button type="sumbit">Submit</Button>
+    </Form>
+    </div>
+    {/* <form className="bookForm" onSubmit={handleSubmit}>
+    <label htmlFor="title" >Title: </label>
+    <input id="title" size="20" value={newBookForm.title} onChange={handleChange} name="title"></input><br />
+    <label htmlFor="author" >Author: </label>
+    <input size="20" id="author" value={newBookForm.author} onChange={handleChange} name="author"></input> <br />
+    <label htmlFor ="genre" >Genre: </label>
+    <input size="20" id="genre" value={newBookForm.genre} onChange={handleChange} name="genre"></input> <br />
       <button>Submit</button>
-    </form>
+    </form> */}
    </div>
   );
 }
