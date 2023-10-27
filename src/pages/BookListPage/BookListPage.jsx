@@ -10,12 +10,14 @@ export default function BookListPage() {
   const[newBookForm, setNewBookForm] = useState({title:"", author:"", genre:""});
 
   async function getBooks() {
-  // const books = await booksAPI.getAll();
+  const books = await booksAPI.getAll();
   // const [books, setBooks] = useState([]);
   console.log(books)
   setBooks(books);
 }
-
+useEffect (function() {
+  getBooks();
+}, []);
 
 
 

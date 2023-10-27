@@ -6,6 +6,10 @@ export async function getAll() {
 
 }
 
+export async function deleteBook(bookId) {
+  return sendRequest(`${BASE_URL}/${bookId}`, "DELETE")
+  }
+
 export async function newBook(bookData){
     return sendRequest(`${BASE_URL}/new`, "POST", bookData);
   }

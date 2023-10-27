@@ -8,8 +8,8 @@ module.exports = {
 
 async function deleteBook(req, res) {
     try {
-        const bookID = req.params.BookID;
-
+        const bookID = req.params.bookID;
+console.log(bookID)
         await Book.findByIdAndDelete(bookID);
 
         res.json({ message: 'Book deleted successfully' });
