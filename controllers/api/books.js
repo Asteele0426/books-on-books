@@ -4,6 +4,7 @@ module.exports = {
     index,
     create,
     delete: deleteBook,
+    updateBook: updateBook,
 };
 
 async function deleteBook(req, res) {
@@ -28,6 +29,19 @@ async function create(req, res) {
     } catch (error) {
         console.error('Error creating book', error);
         res.status(500).json({ error: 'Failed to create a new book' });
+    }
+}
+
+async function updateBook(req, res) {
+    try {
+        const book = await Book.findById(req.params.id)
+        book.title = req.body.title
+        book.author = req.body.author
+        book.genre = req.body.genre
+        await book.save()
+        res.status(200).json(note)
+    } catch (error) {
+        res.status(400).json({ error: error.message })
     }
 }
 

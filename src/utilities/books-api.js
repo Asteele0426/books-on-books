@@ -14,6 +14,10 @@ export async function newBook(bookData){
     return sendRequest(`${BASE_URL}/new`, "POST", bookData);
   }
 
+  export async function updateBook(bookData, bookId) {
+    return sendRequest(`${BASE_URL}/${bookId}`, 'PATCH', bookData)
+}
+
 // This function is never actually used in SEI CAFE,
 // it's only provided here to remind you to follow
 // RESTful routing, etc.

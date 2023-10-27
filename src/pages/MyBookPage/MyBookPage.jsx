@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import '../BookListPage/BookListPage.css';
 import { checkToken } from "../../utilities/users-service";
+import BookForm from '../EditBookPage/EditBookPage'
 
 export default function BookListPage() {
   const [books, setBooks] = useState([]);
@@ -38,15 +39,15 @@ useEffect (function() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const newBook = {}
+    const updateBook = {}
     const token = localStorage.getItem('token');
     const user = JSON.parse(atob(token.split('.')[1])).user
-    newBook.user=user._id
-    newBook.title=newBookForm.title
-    newBook.author=newBookForm.author
-    newBook.genre=newBookForm.genre
-    console.log(newBook)
-    booksAPI.newBook(newBook)
+    updateBook.user=user._id
+    updateBook.title=newBookForm.title
+    updateBook.author=newBookForm.author
+    updateBook.genre=newBookForm.genre
+    console.log(updateBook)
+    booksAPI.updateBook(updateBook)
     getBooks()
   }
 
@@ -59,11 +60,13 @@ useEffect (function() {
   return (
     <div>
           <h1>My Books</h1>
-
+          <h3>Edit Books</h3>
     {books.length===0?<div>No Books Yet</div>:
     <div>{books.map((book)=>{
       return(
-        <div>{book.title}{book.author}{book.genre}<button onClick={()=>handleDelete(book._id)}>Delete</button></div>
+        <div>{book.title}{book.author}{book.genre}
+        <BookForm handleSubmit={handleSubmit} title={'update'} author={'Edit'} genre={'change'}/>
+        <button onClick={()=>handleDelete(book._id)}>Delete</button></div>
       )
     })}</div>
     }
