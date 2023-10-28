@@ -9,7 +9,7 @@ import MyBookPage from '../MyBookPage/MyBookPage';
 import BookList from '../BookListPage/BookListPage';
 import EditBookPage from '../EditBookPage/EditBookPage';
 import NavBar from '../../components/NavBar/NavBar';
-
+import TestPage from '../MyBookPage/TestPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -21,8 +21,8 @@ export default function App() {
             <NavBar user={user} setUser={setUser} />
             <Routes>
               {/* Route components in here */}
-              <Route path="/mybooks" element={<MyBookPage />} />
-              <Route path="/books" element={<BookList />} />
+              <Route path="/mybooks" element={<TestPage user={user}/>} />
+              <Route path="/books" element={<BookList user={user} />} />
               <Route path="/" element={<Index />} />
               <Route path="/edit" element={<EditBookPage />} />
             </Routes>

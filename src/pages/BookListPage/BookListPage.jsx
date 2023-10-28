@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import './BookListPage.css';
 import { checkToken } from "../../utilities/users-service";
 
-export default function BookListPage() {
+export default function BookListPage({user}) {
   const [books, setBooks] = useState([]);
   const[newBookForm, setNewBookForm] = useState({title:"", author:"", genre:""});
 
@@ -38,8 +38,6 @@ useEffect (function() {
   const handleSubmit = (e) => {
     e.preventDefault()
     const newBook = {}
-    const token = localStorage.getItem('token');
-    const user = JSON.parse(atob(token.split('.')[1])).user
     newBook.user=user._id
     newBook.title=newBookForm.title
     newBook.author=newBookForm.author
@@ -47,20 +45,20 @@ useEffect (function() {
     console.log(newBook)
     booksAPI.newBook(newBook)
     getBooks()
+    window.location="/mybooks"
   }
   return (
     <div>
           <h1>Add a Book</h1>
 
-    {books.length===0?<div>No Books Yet</div>:
     <div>{books.map((book)=>{
       return(
-        <div>{book.title}{book.author}{book.genre}</div>
+        <div> </div>
       )
     })}</div>
-    }
+    
     &nbsp; &nbsp; &nbsp; &nbsp;
-   <div className="addBook" >
+   <div align="center" className="addBook" >
     <Form onSubmit={handleSubmit}>
     <Form.Group className="mb-3" controlId="bookForm.ControlInput1">
         <Form.Label>Title</Form.Label>

@@ -5,15 +5,15 @@ import Button from 'react-bootstrap/Button';
 import '../BookListPage/BookListPage.css';
 import { checkToken } from "../../utilities/users-service";
 
-export default function BookForm({ handleSubmit, title, author, genre }) {
+export default function BookForm({handleChange, handleSubmit, title, author, genre, book }) {
   return (
-      <form onSubmit={handleSubmit}>
+      <form id={book?._id}onSubmit={handleSubmit}>
         
-          <label for='title'>Title: </label><input type="text" name="title" placeholder={title} /> <br />
-          <label for='author'>Author: </label><input type="text" name="author" placeholder={author} /><br />
-          <label for='genre'>Genre: </label><input type="text" name="genre" placeholder={genre} /> <br />
+          <label for='title'>Title: </label><input onChange={handleChange} type="text" name="title" placeholder={title} /> <br />
+          <label for='author'>Author: </label><input onChange={handleChange} type="text" name="author" placeholder={author} /><br />
+          <label for='genre'>Genre: </label><input onChange={handleChange} type="text" name="genre" placeholder={genre} /> <br />
          
-          <button type="submit">Update Book</button>
+          <Button type="submit">Update Book</Button>
       </form>
   )
 }

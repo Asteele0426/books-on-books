@@ -33,14 +33,16 @@ async function create(req, res) {
 }
 
 async function updateBook(req, res) {
+    console.log('here', req.body)
     try {
         const book = await Book.findById(req.params.id)
         book.title = req.body.title
         book.author = req.body.author
         book.genre = req.body.genre
         await book.save()
-        res.status(200).json(note)
+        res.status(200).json(book)
     } catch (error) {
+        console.log(error)
         res.status(400).json({ error: error.message })
     }
 }

@@ -1,9 +1,16 @@
 .bookForm {
     width: 50vw
 }
+.update {
+    justify-content: center;
+}
 .addBook {
     width: 50vw;
     justify-content:  center;
+    
+}
+.delete-button {
+    padding: 10px;
     
 }
 input {
