@@ -54,11 +54,11 @@
   //   getBooks()
   // }
 
-//   const handleDelete = (id) => {
-//     console.log(id)
-//   booksAPI.deleteBook(id)
-//   getBooks()
-//   }
+  // const handleDelete = (id) => {
+  //   console.log(id)
+  // booksAPI.deleteBook(id)
+  // getBooks()
+  // }
 
 //   return (
 //     <div>

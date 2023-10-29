@@ -13,12 +13,20 @@ export default function TestPage({user}){
     const [books, setBooks] = useState([]);
   const[newBookForm, setNewBookForm] = useState({title:"", author:"", genre:""});
 
+  async function getAllBooks(){
+    const books= await booksAPI.getAll()
+    console.log(books)
+    setBooks(books)
+}
+  const handleDelete = (id) => {
+    console.log(id)
+  booksAPI.deleteBook(id)
+  getAllBooks()
+  }
+
+
   useEffect(()=>{
-    async function getAllBooks(){
-        const books= await booksAPI.getAll()
-        console.log(books)
-        setBooks(books)
-    }
+   
    getAllBooks()
   },[])
 
@@ -36,6 +44,7 @@ export default function TestPage({user}){
     console.log(newBookForm)
     const updateBook = booksAPI.updateBook(newBookForm, e.target.id)
     console.log(updateBook)
+    getAllBooks()
    
   }
 
@@ -46,6 +55,8 @@ export default function TestPage({user}){
        <div key={book._id}> 
        <p>{book.title}</p>
        <BookForm book={book} handleSubmit={handleSubmit} handleChange={handleChange}/>
+       <Button class="delete-button" onClick={()=>handleDelete(book._id)}>Delete</Button><hr width="50%"></hr>
+
        </div>
     ))}
     </div>
