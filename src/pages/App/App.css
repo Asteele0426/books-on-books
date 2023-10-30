@@ -1,8 +1,11 @@
 body {
-  background-image: url("https://previews.123rf.com/images/motizova/motizova1608/motizova160800266/61508802-open-book-hardback-books-on-wooden-table-education-background-back-to-school-copy-space-for-text.jpg");
+  background-image: url("../images/background.jpg");
   background-size: cover;
   /* display: flex; */
   
+h1 {
+  color: yellow;
+}  
 
 }
 .App {
