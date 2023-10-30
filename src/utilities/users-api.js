@@ -2,7 +2,7 @@
 
 // Add the following import
 import sendRequest from './send-request';
-const BASE_URL = '/api/users';
+const BASE_URL = 'https://books-on-books.onrender.com/users';
 
 // Refactored code below
 export function signUp(userData) {
