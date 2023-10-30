@@ -3,6 +3,7 @@ import * as booksAPI from '../../utilities/books-api';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import '../BookListPage/BookListPage.css';
+import '../App/App.css';
 import { checkToken } from "../../utilities/users-service";
 
 export default function BookForm({handleChange, handleSubmit, title, author, genre, book }) {

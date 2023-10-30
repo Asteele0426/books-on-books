@@ -3,6 +3,7 @@ import * as booksAPI from '../../utilities/books-api';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import './BookListPage.css';
+import '../App/App.css';
 import { checkToken } from "../../utilities/users-service";
 
 export default function BookListPage({user}) {
@@ -18,16 +19,7 @@ export default function BookListPage({user}) {
 useEffect (function() {
   getBooks();
 }, []);
-
-
-
   
-  // async function handleCheckToken() {
-  //  const expDate = await checkToken()
-  //  console.log(expDate)
-  // }
-  
-
   const handleChange=(e)=>{
     
     const {name, value} = e.target
@@ -76,15 +68,6 @@ useEffect (function() {
       <Button type="sumbit">Submit</Button>
     </Form>
     </div>
-    {/* <form className="bookForm" onSubmit={handleSubmit}>
-    <label htmlFor="title" >Title: </label>
-    <input id="title" size="20" value={newBookForm.title} onChange={handleChange} name="title"></input><br />
-    <label htmlFor="author" >Author: </label>
-    <input size="20" id="author" value={newBookForm.author} onChange={handleChange} name="author"></input> <br />
-    <label htmlFor ="genre" >Genre: </label>
-    <input size="20" id="genre" value={newBookForm.genre} onChange={handleChange} name="genre"></input> <br />
-      <button>Submit</button>
-    </form> */}
    </div>
   );
 }

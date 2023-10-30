@@ -1,12 +1,7 @@
 body {
   background-image: url("../images/background.jpg");
   background-size: cover;
-  /* display: flex; */
   
-h1 {
-  color: yellow;
-}  
-
 }
 .App {
   text-align: center;

@@ -1,12 +1,15 @@
+
 .bookForm {
     width: 50vw
 }
+
 .update {
     justify-content: center;
 }
 .addBook {
     width: 50vw;
     justify-content:  center;
+    margin-left: 25%;
     
 }
 .delete-button {
@@ -21,4 +24,5 @@ input {
 h1 {
 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 font-size: 50px;
+color: turquoise
 }
