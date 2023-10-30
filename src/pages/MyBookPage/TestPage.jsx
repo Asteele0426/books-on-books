@@ -45,19 +45,29 @@ export default function TestPage({user}){
     const updateBook = booksAPI.updateBook(newBookForm, e.target.id)
     console.log(updateBook)
     getAllBooks()
+    
    
   }
 
 
    return (
-    <div>
+    <div align="center">
+        <br/>
+        <h1>My Books</h1>
+        <br/>
     {books.map(book=>(
-       <div key={book._id}> 
-       <p>{book.title}</p>
+        <Card class="update" style={{ width: '18rem' }}>
+        <ListGroup variant="flush">
+        <ListGroup.Item>
+       <div key={book._id} align="center"> 
+       <p><b><font size="+3">{book.title}</font></b><br/>
+       <i>{book.author}</i><br/>
+        <u>{book.genre}</u></p>
        <BookForm book={book} handleSubmit={handleSubmit} handleChange={handleChange}/>
-       <Button class="delete-button" onClick={()=>handleDelete(book._id)}>Delete</Button><hr width="50%"></hr>
-
-       </div>
+       <Button class="delete-button" onClick={()=>handleDelete(book._id)}>Delete</Button><hr width="50%"></hr></div>
+    </ListGroup.Item>
+    </ListGroup>
+     </Card>
     ))}
     </div>
   )
