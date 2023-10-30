@@ -9,7 +9,7 @@ import MyBookPage from '../MyBookPage/MyBookPage';
 import BookList from '../BookListPage/BookListPage';
 import EditBookPage from '../EditBookPage/EditBookPage';
 import NavBar from '../../components/NavBar/NavBar';
-import TestPage from '../MyBookPage/TestPage';
+import TestPage from '../MyBookPage/MyBookPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
