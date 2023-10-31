@@ -1,5 +1,6 @@
 import sendRequest from "./send-request";
-const BASE_URL = 'https://books-on-books.onrender.com/books';
+const BASE_URL = './api/books';
+//'https://books-on-books.onrender.com/books'
 
 export async function getAll() {
   return sendRequest(BASE_URL);
